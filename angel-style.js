@@ -4,15 +4,27 @@ if(!styles.some(([id])=>id===STYLE))styles.push([STYLE,'天使双码']);
 const images={};
 const receiptCodes=()=>codes().filter(item=>item.label!=='FRIEND').slice(0,2);
 function qr(item,cx,cy,size){
-  if(!item?.img)return;
+  if(!item?.img){if(!state.exporting){ctx.fillStyle='#f4f4f2';ctx.fillRect(cx-size/2,cy-size/2,size,size);ctx.fillStyle='#999';ctx.textAlign='center';ctx.font='30px "Microsoft YaHei"';ctx.fillText('收款码',cx,cy+10)}return}
   if(item.img.appreciate)drawAppreciate(item.img,cx-size/2,cy-size/2,size);
   else drawKnockout(item.img.canvas,cx-size/2,cy-size/2,size);
 }
+function caption(item,cx,top){
+  const names={WECHAT:'微信收款码',ALIPAY:'支付宝收款码',APPRECIATE:'赞赏码'};
+  const name=names[item?.label]||'微信收款码';
+  ctx.save();
+  ctx.shadowColor='rgba(115,100,110,.12)';ctx.shadowBlur=9;ctx.shadowOffsetY=3;
+  ctx.fillStyle='rgba(255,250,252,.94)';ctx.strokeStyle='#e4d9de';ctx.lineWidth=2;
+  ctx.beginPath();ctx.roundRect(cx-105,top,210,42,21);ctx.fill();ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle='#a18491';ctx.textAlign='center';
+  ctx.font='700 25px "Microsoft YaHei","Trebuchet MS",sans-serif';
+  ctx.fillText('♡  '+name+'  ♡',cx,top+30);
+}
 function drawAngelFixed(){
-  const list=receiptCodes(),single=list.length<2;
+  let list=receiptCodes();if(!list.length&&!state.exporting)list=[{label:'WECHAT'}];const single=list.length<2;
   ctx.drawImage(single?images.single:images.double,0,0,1254,1254);
-  if(single)qr(list[0],627,700,420);
-  else{qr(list[0],337,913,390);qr(list[1],917,913,390);}
+  if(single){qr(list[0],627,670,430);caption(list[0],627,966)}
+  else{qr(list[0],323,925,430);qr(list[1],931,925,430);caption(list[0],323,1200);caption(list[1],931,1200)}
 }
 const previousDraw=draw;
 draw=function(){if(state.style===STYLE)drawAngelFixed();else previousDraw()};

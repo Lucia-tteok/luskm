@@ -1,0 +1,9 @@
+﻿.styles-loading{display:flex;align-items:center;justify-content:center;gap:13px;min-height:220px;margin:24px auto 42px;color:#596158;font:500 17px "Microsoft YaHei",sans-serif}
+.styles-loading[hidden]{display:none}
+.loading-spinner{width:23px;height:23px;border:2px solid #d8dfd5;border-top-color:#6e826a;border-radius:50%;animation:loading-spin .8s linear infinite}
+.loading-dots{display:flex;align-self:center;gap:4px;margin-left:-7px}
+.loading-dots i{width:4px;height:4px;border-radius:50%;background:currentColor;animation:loading-pulse 1.1s ease-in-out infinite}
+.loading-dots i:nth-child(2){animation-delay:.16s}.loading-dots i:nth-child(3){animation-delay:.32s}
+@keyframes loading-spin{to{transform:rotate(360deg)}}
+@keyframes loading-pulse{0%,70%,100%{opacity:.25}35%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.loading-spinner,.loading-dots i{animation:none}}
