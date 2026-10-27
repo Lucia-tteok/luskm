@@ -1,0 +1,16 @@
+/* Monochrome scrapbook template built from the supplied reference artwork. */
+(()=>{
+state.scrapbookNotice=state.scrapbookNotice||'付后请截图，谢谢老板～在线时间不定\n看见回秒回，8H未回dd\n非我原因拒不退款，此收款码仅供本人所有';
+const noticeLabel=document.createElement('label');noticeLabel.hidden=true;noticeLabel.innerHTML='<span>公告</span><textarea rows="4" maxlength="180"></textarea>';
+const noticeInput=noticeLabel.querySelector('textarea');noticeInput.value=state.scrapbookNotice;document.querySelector('.text-controls').append(noticeLabel);
+noticeInput.oninput=()=>{state.scrapbookNotice=noticeInput.value;draw()};
+const baseImage=new Image();
+baseImage.onload=async()=>{assets.styleBackgrounds.scrapbook=baseImage;if(state.style==='scrapbook'){state.libraryBg=baseImage;state.qrColor=null;await recolor()}renderLibraryPreviews();draw()};
+baseImage.src='./assets/scrapbook-reference-base.png';
+const previousSelect=selectStyle;
+selectStyle=async function(id){await previousSelect(id);const active=id==='scrapbook';noticeLabel.hidden=!active;if(active){document.querySelector('#backgroundTrigger').hidden=true;quoteInput.closest('label').hidden=false;document.querySelector('#nameInput').closest('label').hidden=true;inputs.avatar.closest('.upload-card').hidden=true;state.libraryBg=baseImage;state.qrColor=null;await recolor();draw()}};
+const previousDraw=draw;
+draw=function(){if(state.style!=='scrapbook')return previousDraw();cropHitRegions.length=0;ctx.clearRect(0,0,1254,1254);if(baseImage.complete&&baseImage.naturalWidth)ctx.drawImage(baseImage,0,0,1254,1254);else{ctx.fillStyle='#f7f7f7';ctx.fillRect(0,0,1254,1254)}ctx.fillStyle='#676767';ctx.textAlign='left';ctx.font='23px "Microsoft YaHei"';wrapCopy(state.quote||'',322,410,650,34,5);ctx.font='22px "Microsoft YaHei"';wrapCopy(state.scrapbookNotice||'',322,620,690,34,4);let items=codes().filter(v=>v.label!=='FRIEND').slice(0,3);if(!items.length)items=[{label:'WECHAT'},{label:'APPRECIATE'},{label:'ALIPAY'}];const xs=items.length===1?[627]:items.length===2?[475,779]:[373,627,881],size=184;items.forEach((item,i)=>{const x=xs[i]-size/2,y=790;ctx.save();ctx.shadowColor='rgba(80,80,80,.12)';ctx.shadowBlur=13;ctx.shadowOffsetY=5;ctx.fillStyle='rgba(255,255,255,.94)';rr(x,y,size,size,5);ctx.fill();ctx.restore();if(item.img){if(item.img.appreciate)drawAppreciate(item.img,x+8,y+8,size-16);else drawKnockout(item.img.canvas,x+8,y+8,size-16)}else{ctx.fillStyle='#f7f7f7';ctx.fillRect(x+10,y+10,size-20,size-20);ctx.fillStyle='#999';ctx.textAlign='center';ctx.font='20px "Microsoft YaHei"';ctx.fillText('收款码',xs[i],y+100)}ctx.fillStyle='#777';ctx.textAlign='center';ctx.font='24px Georgia';ctx.fillText(({WECHAT:'VX',APPRECIATE:'ZSM',ALIPAY:'ZFB'})[item.label]||item.label,xs[i],1018)});};
+const gallery=document.querySelector('.style-gallery');if(gallery&&!gallery.querySelector('[data-style="scrapbook"]')){const button=document.createElement('button');button.className='style-choice';button.type='button';button.dataset.style='scrapbook';button.setAttribute('aria-label','梦境手帐');button.innerHTML='<i class="style-thumb"></i>';button.onclick=()=>selectStyle('scrapbook');gallery.append(button)}
+renderLibraryPreviews();
+})();
