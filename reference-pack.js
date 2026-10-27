@@ -42,7 +42,7 @@ function drawProfilePost(){
   ctx.font='22px "Microsoft YaHei"';ctx.fillText('“내가 널 사랑하는 만큼 눈이 온다면 봄은 오지 않을거”',220,552);
   ctx.font='21px "Microsoft YaHei"';ctx.fillText('520 正在關註  1,314 關注者',220,587);
   plainCircle(state.avatar,246,720,34);plainCircle(state.avatar,246,1054,34);
-  ctx.fillStyle='#666';ctx.font='20px "Microsoft YaHei"';wrapCopy(state.quote||'',300,1105,680,30,2);
+  ctx.fillStyle='#666';ctx.font='26px "Microsoft YaHei"';wrapCopy(state.quote||'',300,1105,680,30,2);
   const a=codes().filter(v=>v.label!=='FRIEND').slice(0,3);
   const xs=a.length===1?[663]:a.length===2?[416,909]:[416,663,909],y=770,size=158;
   a.forEach((v,i)=>{if(v.img){if(v.img.appreciate)drawAppreciate(v.img,xs[i]-size/2,y,size);else drawKnockout(v.img.canvas,xs[i]-size/2,y,size)}});
