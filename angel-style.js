@@ -12,11 +12,11 @@ function caption(item,cx,top){
   const names={WECHAT:'微信收款码',ALIPAY:'支付宝收款码',APPRECIATE:'赞赏码'};
   const name=names[item?.label]||'微信收款码';
   ctx.save();
-  ctx.shadowColor='rgba(115,100,110,.12)';ctx.shadowBlur=9;ctx.shadowOffsetY=3;
-  ctx.fillStyle='rgba(255,250,252,.94)';ctx.strokeStyle='#e4d9de';ctx.lineWidth=2;
+  ctx.shadowColor='rgba(110,110,110,.12)';ctx.shadowBlur=9;ctx.shadowOffsetY=3;
+  ctx.fillStyle='rgba(255,255,255,.94)';ctx.strokeStyle='#d4d4d4';ctx.lineWidth=2;
   ctx.beginPath();ctx.roundRect(cx-105,top,210,42,21);ctx.fill();ctx.stroke();
   ctx.restore();
-  ctx.fillStyle='#a18491';ctx.textAlign='center';
+  ctx.fillStyle='#acacac';ctx.textAlign='center';
   ctx.font='700 25px "Microsoft YaHei","Trebuchet MS",sans-serif';
   ctx.fillText('♡  '+name+'  ♡',cx,top+30);
 }
