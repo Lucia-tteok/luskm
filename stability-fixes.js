@@ -42,7 +42,7 @@ function revealCompleteLibrary(){
     gallery.hidden=false;if(loading)loading.hidden=true;
   };
   const timer=setInterval(check,100);
-  const fallback=setTimeout(()=>{if(finished)return;finished=true;clearInterval(timer);gallery.hidden=false;if(loading)loading.textContent='部分款式预览未能加载，请刷新页面重试';},12000);
+  const fallback=setTimeout(()=>{if(finished)return;finished=true;clearInterval(timer);if(loading)loading.textContent='部分款式预览未能加载，请刷新页面重试';},12000);
   check();
 }
 function install(){if(installed||typeof selectStyle!=='function'||typeof draw!=='function'||!document.querySelector('#editorStyleStrip'))return false;installed=true;addDefaultBackground();
