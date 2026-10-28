@@ -91,11 +91,12 @@
     // The uploaded/default photograph is strictly the lowest layer.
     cover(bg(),0,0,1254,1254);
     ctx.fillStyle='rgba(0,0,0,.16)';ctx.fillRect(0,0,365,1254);
-    box(365,0,889,1254,[55,0,0,0],'rgba(255,255,255,.94)');
+    const accent=palette(true).dark;
+    const tint=accent.match(/[a-f\d]{2}/gi).map(value=>Math.round(255*.86+parseInt(value,16)*.14));
+    box(365,0,889,1254,[55,0,0,0],`rgba(${tint.join(',')},.82)`);
     ctx.save();ctx.globalAlpha=.12;ctx.strokeStyle='#777';ctx.lineWidth=1;
     for(let offset=-1300;offset<1300;offset+=14)line(0,offset,1254,offset+1254,1,'#9b9b9b');
     ctx.restore();
-    const accent=palette(true).dark;
     icon('expand',409,39,42,accent);
     text('MY SPACE',808,73,'bold 27px Arial','black','center');
     text('•••',1175,73,'30px Arial','black','center');
