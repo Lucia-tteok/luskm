@@ -1,7 +1,7 @@
 (()=>{
 const originalCover=cover;cover=function(image,...args){if(!image)return;return originalCover(image,...args)};
-const STYLE_KEYS=['bg','libraryBg','avatar','wechat','appreciate','alipay','friend','visitor1','visitor2','name','english','quote','quote2','giftText','appleTitle','appleLine','mySpacePlaying','qrColor','desktopPhotoImage','collectionPhotoImage','feedPhotoImage','appleHeaderImage','applePhotoImage','appleEditImage','cropSlotImages'];
-const defaults={name:'昵称',english:'nickname',quote:'感谢你的支持与喜欢',quote2:'感谢阅读，祝你天天开心',giftText:'付后请截图，谢谢老板\n在线时间不定，看见回秒回，8H未回dd\n非我原因拒不退款',appleTitle:'Blue chime',appleLine:'/ 风铃　　[我们会在春天短暂相逢]',mySpacePlaying:'正在播放：北国-燕池',qrColor:null};
+const STYLE_KEYS=['bg','libraryBg','avatar','wechat','appreciate','alipay','friend','visitor1','visitor2','name','english','quote','quote2','giftText','appleTitle','appleLine','mySpacePlaying','qrColor','qrRequestedColor','decorColor','desktopPhotoImage','collectionPhotoImage','feedPhotoImage','appleHeaderImage','applePhotoImage','appleEditImage','cropSlotImages'];
+const defaults={name:'昵称',english:'nickname',quote:'感谢你的支持与喜欢',quote2:'感谢阅读，祝你天天开心',giftText:'付后请截图，谢谢老板\n在线时间不定，看见回秒回，8H未回dd\n非我原因拒不退款',appleTitle:'Blue chime',appleLine:'/ 风铃　　[我们会在春天短暂相逢]',mySpacePlaying:'正在播放：北国-燕池',qrColor:null,qrRequestedColor:null,decorColor:null};
 const styleState=new Map();
 let installed=false;
 const STYLE_LABELS={ink:'水墨云笺',profile:'侧栏资料页',desktop:'透明玻璃桌面',collection:'左图右码资料卡',social:'社交动态主页',dew:'清透资料卡',card:'深色名片页',apple:'清蓝双栏页',feed:'星帘个人主页',gift:'少女礼盒',scrapbook:'梦境手帐',journal:'日系手帐',profilePost:'社交档案',hanging:'悬挂资料卡',bannerTriple:'横幅收款卡',angelFixed:'天使收款卡',mySpace:'黑白空间'};

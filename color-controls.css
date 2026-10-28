@@ -1,0 +1,13 @@
+.color-tools{display:grid;gap:7px;align-items:stretch}
+.color-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.color-row strong{min-width:70px;color:#4e554c;font-size:12px;font-weight:600}
+.color-tools .color-row button,.color-tools .color-row label{padding:7px 9px}
+.color-tools .color-row label{gap:5px}
+.color-tools .color-row input{width:27px;height:23px;cursor:pointer}
+.actual-qr-color{display:flex;align-items:center;gap:7px;padding:4px 0 1px 77px;color:#555;font-size:11px}
+.actual-qr-color i{width:23px;height:23px;border:1px solid #bbb;border-radius:7px;flex:none}
+.actual-qr-color output{font-family:ui-monospace,Consolas,monospace;font-weight:700;margin-left:3px}
+.color-tools small{padding-left:77px;color:#6a7790;font-size:11px;line-height:1.45}
+.decor-row{margin-top:4px;padding-top:9px;border-top:1px solid #e5e6e2}
+@media(max-width:520px){.color-row strong{min-width:100%;margin-bottom:1px}.actual-qr-color,.color-tools small{padding-left:0}}
+@media(max-width:960px){.app-shell,.editor,.current-style{min-width:0}.app-shell .editor .editor-style-strip{width:100%;min-width:0;overflow-x:auto!important;justify-content:flex-start!important}}

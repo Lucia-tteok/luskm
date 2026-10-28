@@ -31,7 +31,7 @@ function drawProfilePost(){
   ctx.drawImage(loaded.profilePost,0,0,1254,1254);
   // The dotted frame belongs to the template artwork. Tint only its four
   // outer bands; the color blend keeps the white dots and binder details.
-  ctx.save();ctx.globalCompositeOperation='color';ctx.fillStyle=backgroundPalette().mid;
+  ctx.save();ctx.globalCompositeOperation='color';ctx.fillStyle=palette().mid;
   ctx.fillRect(0,0,1254,47);ctx.fillRect(0,1207,1254,47);
   ctx.fillRect(90,47,36,1160);ctx.fillRect(1214,47,40,1160);ctx.restore();
   // Cover the entire gray photo guide, including its antialiased outer pixels.
